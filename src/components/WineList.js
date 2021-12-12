@@ -1,12 +1,13 @@
-
+ 
 import React, { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
 import { WINE_URL } from 'utils/urls'
 import styled from 'styled-components'
+import Wine from './Wine'
 
 const WineList = () => {
   const [wines, setWines] = useState([])
   const [page, setPage] = useState(1)
+  const [postPerPage, setPostPerPage] = useState(20)
 
   useEffect(() => {
     fetch(WINE_URL)
@@ -14,7 +15,16 @@ const WineList = () => {
       .then((json) => {
         setWines(json.results)
       })
-  }, [page])
+  }, [])
+
+  // get current posts
+
+  const endIndex = page * postPerPage
+  const startIndex = endIndex - postPerPage
+  const currentPage = wines.slice(startIndex, endIndex)
+
+  // change page
+  const paginate = pageNumber => setPage(pageNumber)
 
 
   const nextPage = () => {
@@ -24,74 +34,33 @@ const WineList = () => {
     setPage(page - 1)
   }
 
-  const startIndex = (page - 1)
-
-  const linkStyle = {
-    margin: "1rem",
-    textDecoration: "none",
-    color: 'black'
-  }
-
-  const FlexContainer = styled.section`
+  const ContentWrapper = styled.section`
     display: flex;
     flex-direction: column;
-    background: white;
-    padding: 15px;
-    width: 50vw;
+    align-items: center;
   `
 
-  const WineContainer = styled.div`
-    display: flex;
-    justify-content: space-between;
-    border: solid black 1px;
-    padding: 10px;
-  `
-  const TitleContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 35vw;
-`
-const PointsContainer = styled.div`
-    display: flex;
-    flex-direction: column;
-  `
-  
 
   return (
     <>
-      <div>
-        <h1>Wines</h1>
-      </div>
+      <ContentWrapper>
+        <div>
+          <h1>Wines</h1>
+        </div>
 
-      <div>
-        <button
-        type="button"
-        onClick={previousPage} 
-        disabled={startIndex < 0}>Previous Page</button>
-        <button
-        onClick={nextPage}
-        >Next Page</button>
-      </div>
-
-
-      <FlexContainer>
-          {wines.map((wine) => {
-            return (
-              <Link to={`/wines/titles/${wine.title}`} style={linkStyle}>
-                <WineContainer>
-                  <TitleContainer>
-                    <h1>{wine.title}</h1>
-                    <h3>{wine.province}, {wine.country}</h3>
-                    <h4>- {wine.taster_name}</h4>
-                  </TitleContainer>
-                  <PointsContainer>
-                    <h1>{wine.points} points</h1>
-                    {wine.price && <h1>$ {wine.price}</h1>}
-                  </PointsContainer>
-                </WineContainer>
-              </Link>
-          )})}
-      </FlexContainer>
+        <div>
+          <button
+          type="button"
+          onClick={previousPage} 
+          disabled={startIndex <= 0}>Previous Page</button>
+          <button
+          onClick={nextPage}
+          disabled={endIndex > wines.length}
+          >Next Page</button>
+        </div>
+        {/* <Pagination postPerPage={postPerPage} postPerPage={postPerPage} totalPosts={wines.length} paginate={paginate} endIndex={endIndex} startIndex={startIndex} currentPage={currentPage}/> */}
+        <Wine wines={currentPage} />
+      </ContentWrapper>
     </>
   )
 }
