@@ -1,4 +1,4 @@
-export const WINE_URL = `https://winemag.herokuapp.com/wines?page=1&limit=500`
+export const WINE_URL = `https://winemag.herokuapp.com/wines?page=1&limit=8000`
 
 export const TITLE_URL = (wineTitle) => `https://winemag.herokuapp.com/wines/titles/${wineTitle}`
 

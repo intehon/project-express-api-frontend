@@ -32,24 +32,23 @@ const Nav = styled.div`
   display: flex;
   justify-content: center;
   padding: 15px;
-  text-decoration: none;
 `
 
 const WineContainer = styled.div`
   display: flex;
-  flex-direction: column;
+  justify-content: space-around;
   border: solid black 1px;
   padding: 10px;
 `
-      const TitleContainer = styled.div`
-      display: flex;
-      flex-direction: column;
-      width: 35vw;
-    `
-    const PointsContainer = styled.div`
-        display: flex;
-        flex-direction: column;
-      `
+  const TextContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 35vw;
+`
+  const PointsContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+`
 
   return (
     <ContentWrapper>
@@ -62,21 +61,20 @@ const WineContainer = styled.div`
 
         <WineContainer>
           {details.map((wine) => (
-          <div className='reviewSection'>
+          <TextContainer className='reviewSection'>
               <h1>{wine.title}</h1>
               <p>{wine.description}</p>
               <p>{wine.taster_name}</p>
-              <p>{wine.taster_twitter_handle}</p>
-          </div>
+              {wine.taster_twitter_handle && <a href={`https://twitter.com/${wine.taster_twitter_handle}`} target='_blank' rel="noopener noreferrer">{wine.taster_twitter_handle}</a>}
+          </TextContainer>
           ))}
           {details.map((wine) => (
-          <div className='pointsSection'>
-              <h2>{wine.points}</h2>
-              <p>{wine.price}</p>
+          <PointsContainer className='pointsSection'>
+              <h2>{wine.points} points</h2>
+              {wine.price && <p>$ {wine.price}</p>}
               <p>{wine.variety}</p>
               <p>{wine.province}, {wine.country}</p>
-              <p>{wine.winery}</p>
-          </div>
+          </PointsContainer>
           ))}
         </WineContainer>
     </ParentContainer>

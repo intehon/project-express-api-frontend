@@ -13,8 +13,7 @@ const Wine = ({ wines }) => {
       const FlexContainer = styled.section`
         display: flex;
         flex-direction: column;
-        /* justify-content: center; */
-        background: white;
+        opacity: 0.85;
         padding: 15px;
         width: 50vw;
       `
@@ -26,11 +25,11 @@ const Wine = ({ wines }) => {
         padding: 10px;
       `
       const TitleContainer = styled.div`
-      display: flex;
-      flex-direction: column;
-      width: 35vw;
-    `
-    const PointsContainer = styled.div`
+        display: flex;
+        flex-direction: column;
+        width: 35vw;
+      `
+      const PointsContainer = styled.div`
         display: flex;
         flex-direction: column;
       `
