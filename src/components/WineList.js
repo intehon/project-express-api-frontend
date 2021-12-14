@@ -18,7 +18,7 @@ const ContentWrapper = styled.section`
 display: flex;
 flex-direction: column;
 background: #FEF4E8;
-opacity: 0.85;
+opacity: 0.90;
 align-items: center;
 padding-bottom: 15px;
 border-radius: 6px;

@@ -17,7 +17,7 @@ const GridContainer = styled.section`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 2rem;
-  opacity: 0.85;
+  opacity: 0.90;
 `
 
 const Image = styled.img`
