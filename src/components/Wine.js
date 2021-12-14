@@ -2,38 +2,41 @@ import React from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 
+const linkStyle = {
+  margin: "1rem",
+  textDecoration: "none",
+  color: 'black'
+}
+
+const FlexContainer = styled.section`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  opacity: 0.85;
+`
+
+const WineContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  border: solid black 2px;
+  padding: 10px;
+  box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, .12);
+  border-radius: 6px;
+`
+const TitleContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 25vw;
+`
+const PointsContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+`
+
+
 const Wine = ({ wines }) => {
 
-    const linkStyle = {
-        margin: "1rem",
-        textDecoration: "none",
-        color: 'black'
-      }
-    
-      const FlexContainer = styled.section`
-        display: flex;
-        flex-direction: column;
-        opacity: 0.85;
-        padding: 15px;
-        width: 50vw;
-      `
-    
-      const WineContainer = styled.div`
-        display: flex;
-        justify-content: space-between;
-        border: solid black 1px;
-        padding: 10px;
-      `
-      const TitleContainer = styled.div`
-        display: flex;
-        flex-direction: column;
-        width: 35vw;
-      `
-      const PointsContainer = styled.div`
-        display: flex;
-        flex-direction: column;
-      `
-      
+ 
     return (
         <FlexContainer>
           {wines.map((wine) => {

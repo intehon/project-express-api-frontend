@@ -1,6 +1,54 @@
 import React, { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
 import { TOP_URL } from 'utils/urls'
+import styled from 'styled-components'
+import header from 'images/header-img.png'
+
+const ContentWrapper = styled.section`
+display: flex;
+flex-direction: column;
+background: #FEF4E8;
+opacity: 0.85;
+align-items: center;
+padding: 15px;
+border-radius: 6px;
+`
+
+const GridContainer = styled.section`
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 2rem;
+  opacity: 0.85;
+`
+
+const Image = styled.img`
+width: 50%;
+opacity: 0.85;
+`
+
+const WineContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  border: solid black 2px;
+  padding: 5px;
+  box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, .12);
+  border-radius: 6px;
+`
+
+const Link = styled.a`
+margin: 1rem;
+text-decoration: none;
+color: black;
+`
+
+const GoBackLink = styled.a`
+border: 2px black solid;
+border-radius: 6px;
+text-transform: uppercase;
+text-decoration: none;
+color: black;
+padding: 5px;
+margin: 10px;
+`
 
 const TopRated = () => {
   const [wines, setWines] = useState([])
@@ -15,20 +63,23 @@ const TopRated = () => {
 
   return (
     <>
-      <div>
-        <h1>Top rated wines</h1>
-      </div>
-      <section>
+    <ContentWrapper>
+    <Image src={header} alt='Header' />
+    <GoBackLink href="/" exact="true">
+            Go Back
+          </GoBackLink>
+      <GridContainer>
         {wines.map((wine) => (
-          <div className="wineCard" key={wine.title}>
+          <WineContainer className="wineCard" key={wine.title}>
             <Link to={`/wines/${wine.title}`}>
-                <p>{wine.title}</p>
-                <p>{wine.points} points</p>
-                <p>{wine.province}, {wine.country}</p>
-            </Link>
-          </div>
+                <h3>{wine.title}</h3>
+                <h3>{wine.points} points</h3>
+                <h5>{wine.province}, {wine.country}</h5>
+                </Link>
+          </WineContainer>
         ))}
-      </section>
+      </GridContainer>
+      </ContentWrapper>
     </>
   )
 }
