@@ -63,22 +63,22 @@ const TopRated = () => {
 
   return (
     <>
-    <ContentWrapper>
-    <Image src={header} alt='Header' />
-    <GoBackLink href="/" exact="true">
-            Go Back
-          </GoBackLink>
-      <GridContainer>
-        {wines.map((wine) => (
-          <WineContainer className="wineCard" key={wine.title}>
-            <Link to={`/wines/${wine.title}`}>
+      <ContentWrapper>
+        <Image src={header} alt='Header' />
+        <GoBackLink href="/" exact="true">
+          Go Back
+        </GoBackLink>
+        <GridContainer>
+          {wines.map((wine) => (
+            <WineContainer className="wineCard" key={wine.title}>
+              <Link to={`/wines/${wine.title}`}>
                 <h3>{wine.title}</h3>
                 <h3>{wine.points} points</h3>
                 <h5>{wine.province}, {wine.country}</h5>
-                </Link>
-          </WineContainer>
-        ))}
-      </GridContainer>
+              </Link>
+            </WineContainer>
+          ))}
+        </GridContainer>
       </ContentWrapper>
     </>
   )

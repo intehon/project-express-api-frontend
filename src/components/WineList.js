@@ -78,9 +78,9 @@ const WineList = () => {
       <Image src={header} alt='Header' />
         <NavContainer>
           <Nav>
-              <Link href={`/top-rated`}>Top Rated Wines</Link>
+              <Link href={`/wines/top-rated`}>Top Rated Wines</Link>
               <p class="navigation">|</p>
-              <Link href={`/most-expensive`}>Most Expensive Wines</Link>
+              <Link href={`/wines/most-expensive`}>Most Expensive Wines</Link>
               <p class="navigation">|</p>
               <Link class="search-link" href="#">Search</Link>
           </Nav>

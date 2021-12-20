@@ -17,10 +17,10 @@ export const App = () => {
           <Route path="/wines/titles/:title" element={<WineDetails />}>
           </Route>
 
-          <Route path="/top-rated" element={<TopRated />}>
+          <Route path="/wines/top-rated" element={<TopRated />}>
           </Route>
 
-          <Route path="/most-expensive" element={<MostExpensive />}>
+          <Route path="/wines/most-expensive" element={<MostExpensive />}>
           </Route>
 
         </Routes>
