@@ -4,7 +4,6 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background: url('./images/background.jpeg');
-  /* background-color: brown; */
   background-size: cover;
   background-repeat: repeat;
   padding: 50px;
